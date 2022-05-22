@@ -1,0 +1,97 @@
+#include<bits/stdc++.h>
+#include <iostream>
+using namespace std;
+
+class node{
+    public:
+    int data;
+    node* next;
+    
+    node(int data)
+    {
+        this->data=data;
+        this->next=NULL;
+    }
+    
+};
+void insertatfirst(node* &head,int x)
+{
+    node* temp=new node(x);
+    temp->next=head;
+    head=temp;
+}
+void insertatlast(node* &head,int x)
+{ 
+    node* last=head;
+    node *temp=new node(x);
+    
+    while(last->next!=NULL)
+    {
+        last=last->next;
+    }
+    last->next=temp;
+}
+void print(node* &head)
+{  node* radhe=head;
+    while(radhe!=NULL)
+    {
+        cout<<radhe->data<<" ";
+    radhe=radhe->next;
+        
+    }
+    cout<<endl;
+}
+void insertatmiddle(node* &head,int x,int position)
+{   
+    
+    if(position==1)
+    {
+        insertatfirst(head,x);
+        return;
+    }
+    int i=1;
+    node* temp=head;
+    node* insert=new node(x);
+    while(i<position-1)
+    {
+        
+        temp=temp->next;
+        i++;
+    }
+    insert->next=temp->next;
+   temp->next=insert;
+    
+    
+    
+    
+}
+
+
+int main()
+{
+ 
+node *head=NULL;
+insertatfirst(head,10);
+insertatfirst(head,12);
+insertatfirst(head,15);
+insertatlast(head,77);
+insertatfirst(head,209);
+insertatmiddle(head,555,1);
+print(head);
+// insertatfirst(head,10);
+// insertatlast(head,20);
+// print(head);
+// insertatlast(head,30);
+// print(head);
+// insertatlast(head,40);
+// print(head);
+
+
+
+
+
+
+
+}
+ 
+ 
